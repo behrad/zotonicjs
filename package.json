@@ -1,0 +1,20 @@
+{
+  "name": "zotonic",
+  "version": "0.0.1",
+  "description": "Zotonic Service API Client in Nodejs",
+  "main": "zotonic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "async": "latest",
+    "form-data": "0.0.8",
+    "request": ">2.10.0"
+  },
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/behrad/zotonicjs.git"
+    },
+  "author": "Jrad",
+  "license": "BSD"
+}
