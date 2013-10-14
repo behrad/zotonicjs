@@ -96,7 +96,12 @@
             qs: options.params,
             body: options.data ? JSON.stringify( options.data ) : null
         }, function( err, resp, body ){
-            clbk && clbk( err, body != undefined ? JSON.parse( body ) : {} );
+            var d = body;
+            try{
+                d = JSON.parse( body );
+            } catch(e ) {
+            }
+            clbk && clbk( err, body != undefined ? d : {} );
         });
     };
 
@@ -155,11 +160,14 @@
                 }
             }, function(err, res, body) {
                 if( err ) {
-                    console.error( err );
                     return clbk && clbk( err );
                 }
-//                    console.log( JSON.parse(body).rsc_id );
-                clbk && clbk( null, JSON.parse(body) );
+                try {
+                    var v = JSON.parse(body);
+                } catch(e){
+                    err = body;
+                }
+                clbk && clbk( err, v);
             })._form = form;
         });
     };
