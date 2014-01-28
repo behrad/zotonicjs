@@ -96,12 +96,11 @@
             qs: options.params,
             body: options.data ? JSON.stringify( options.data ) : null
         }, function( err, resp, body ){
-            var d = body;
             try{
-                d = JSON.parse( body );
+                clbk && clbk( err, JSON.parse( body ) );
             } catch(e ) {
+                clbk && clbk( err || body );
             }
-            clbk && clbk( err, body != undefined ? d : {} );
         });
     };
 
